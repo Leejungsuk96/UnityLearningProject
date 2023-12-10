@@ -25,7 +25,9 @@ public class ProjectileManager : MonoBehaviour
         GameObject obj = Instantiate(testObj);
 
         obj.transform.position = startPosition;
-        // 발사추가
+        RangaedAttackController attackController = obj.GetComponent<RangaedAttackController>();
+        attackController.InitializeAttack(direction, attackData, this);
+        obj.SetActive(true);
     }
   
 }
