@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class RangaedAttackController : MonoBehaviour
@@ -99,7 +100,7 @@ public class RangaedAttackController : MonoBehaviour
     {
         if (creatFx)
         {
-
+            _projectileManager.CreateImpactParticlesAtPosition(position, _attackData);
         }
         gameObject.SetActive(false);
     }
