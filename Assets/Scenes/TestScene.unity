@@ -225,6 +225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 370448710}
   - component: {fileID: 370448709}
+  - component: {fileID: 370448711}
   m_Layer: 8
   m_Name: MainSprite
   m_TagString: Untagged
@@ -300,6 +301,27 @@ Transform:
   - {fileID: 1212834621}
   m_Father: {fileID: 1598104267}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &370448711
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370448708}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c3bbe21ecc7ce8c41a55c17ecf1e6c43, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &435821780
 GameObject:
   m_ObjectHideFlags: 0
@@ -3193,6 +3215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1501137074}
   - component: {fileID: 1501137075}
+  - component: {fileID: 1501137076}
   m_Layer: 0
   m_Name: ProjectileManager
   m_TagString: Untagged
@@ -3228,7 +3251,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _impactParticleSystem: {fileID: 0}
-  testObj: {fileID: 916783012940732710, guid: 9c67643535544f14f81bddb42cecaf84, type: 3}
+--- !u!114 &1501137076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501137073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f97aec2489c7514b9c5a66b08c0b33a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: Arrow
+    prefab: {fileID: 916783012940732710, guid: 9c67643535544f14f81bddb42cecaf84, type: 3}
+    size: 20
 --- !u!1 &1598104260
 GameObject:
   m_ObjectHideFlags: 0
@@ -3246,6 +3284,7 @@ GameObject:
   - component: {fileID: 1598104261}
   - component: {fileID: 1598104268}
   - component: {fileID: 1598104269}
+  - component: {fileID: 1598104270}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -3441,6 +3480,18 @@ MonoBehaviour:
     speed: 5
     attackSO: {fileID: 11400000, guid: 339ba22bb906f4540800379065265013, type: 2}
   StatsModifiers: []
+--- !u!114 &1598104270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598104260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42fc4a0df3c8c23499c49c6273810654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2116080780
 GameObject:
   m_ObjectHideFlags: 0

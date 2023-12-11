@@ -7,7 +7,8 @@ public class ProjectileManager : MonoBehaviour
     [SerializeField] private ParticleSystem _impactParticleSystem;
 
     public static ProjectileManager instance;
-    [SerializeField] private GameObject testObj;
+
+    private ObjectPool objectPool;
     private void Awake()
     {
         instance = this;
@@ -16,13 +17,13 @@ public class ProjectileManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        objectPool = GetComponent<ObjectPool>();
     }
 
     public void ShootBullet(Vector2 startPosition, Vector2 direction, RangedAttackData attackData)
     {
         //юс╫ц
-        GameObject obj = Instantiate(testObj);
+        GameObject obj = objectPool.SpawnFromPool(attackData.bulletNameTag);
 
         obj.transform.position = startPosition;
         RangaedAttackController attackController = obj.GetComponent<RangaedAttackController>();
