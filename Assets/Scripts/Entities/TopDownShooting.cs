@@ -24,9 +24,18 @@ public class TopDownShooting : MonoBehaviour
         _controller.OnLookEnvent += OnAim;
     }
 
-    private void OnShoot()
+    private void OnShoot(AttackSO attackSO)
     {
-        CreatProjectile();
+        RanagedAttackData rangedAttackData = attackSO as RanagedAttackData;
+        float projectilesAngleSpace = rangedAttackData.multipleProjectilesAngle;
+        int numberOfProjectilesPreShot = rangedAttackData.numberofProjectilesPerShot;
+        float minAngle = -()
+        for(int i = 0; i < 5; i++)
+        {
+            CreatProjectile();
+        }
+
+        
     }
 
     private void CreatProjectile()
