@@ -1,16 +1,17 @@
-using System;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TopDownShooting : MonoBehaviour
 {
-
+    private ProjectileManager _projectileManager;
     private TopDownCharacterController _controller;
 
     [SerializeField] private Transform projectileSpawnPosition;
     private Vector2 _aimDirection = Vector2.right;
-    public GameObject testPrefab;
+    
+    
 
     // Start is called before the first frame update
 
@@ -20,29 +21,43 @@ public class TopDownShooting : MonoBehaviour
     }
     void Start()
     {
+        _projectileManager = ProjectileManager.instance;
         _controller.OnAttackEvent += OnShoot;
         _controller.OnLookEnvent += OnAim;
     }
 
     private void OnShoot(AttackSO attackSO)
     {
-        RanagedAttackData rangedAttackData = attackSO as RanagedAttackData;
+        RangedAttackData rangedAttackData = attackSO as RangedAttackData;
         float projectilesAngleSpace = rangedAttackData.multipleProjectilesAngle;
         int numberOfProjectilesPreShot = rangedAttackData.numberofProjectilesPerShot;
-        float minAngle = -()
+        float minAngle = -(numberOfProjectilesPreShot / 2f) * projectilesAngleSpace + 0.5f * rangedAttackData.multipleProjectilesAngle;
+
+
         for(int i = 0; i < 5; i++)
         {
-            CreatProjectile();
+            float angle = minAngle + projectilesAngleSpace * i;
+            float randomSpread = Random.Range(-rangedAttackData.spread, rangedAttackData.spread);
+            angle += randomSpread;
+            CreatProjectile(rangedAttackData, angle);
         }
 
         
     }
 
-    private void CreatProjectile()
+    private void CreatProjectile(RangedAttackData ranagedAttackData, float angle)
     {
-        Instantiate(testPrefab, projectileSpawnPosition.position, Quaternion.identity);
+        _projectileManager.ShootBullet(
+            projectileSpawnPosition.position,
+            RotateVector2(_aimDirection, angle),
+            ranagedAttackData
+            );
     }
 
+    private static Vector2 RotateVector2(Vector2 v, float degree)
+    {
+        return Quaternion.Euler(0, 0, degree) * v;
+    }
     private void OnAim(Vector2 newAimDirection)
     {
         _aimDirection = newAimDirection;

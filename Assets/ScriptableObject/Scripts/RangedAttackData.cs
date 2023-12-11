@@ -5,13 +5,13 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "RangedAttackData", menuName = "TopDOwnCOntroller/Attack/Ranged", order = 1)]
 
-public class RanagedAttackData : AttackSO
+public class RangedAttackData : AttackSO
 {
     [Header("Ranged Attack Data")]
     public string bullerNameTag;
     public float duration;
-    public float spreed;
-    public float numberofProjectilesPerShot;
+    public float spread;
+    public int numberofProjectilesPerShot;
     public float multipleProjectilesAngle;
     public Color projectileColor;
 }
