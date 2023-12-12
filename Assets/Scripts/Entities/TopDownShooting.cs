@@ -9,8 +9,8 @@ public class TopDownShooting : MonoBehaviour
 
     [SerializeField] private Transform projectileSpawnPosition;
     private Vector2 _aimDirection = Vector2.right;
-    
-    
+
+    public AudioClip shootingClip;
 
     // Start is called before the first frame update
 
@@ -46,6 +46,9 @@ public class TopDownShooting : MonoBehaviour
     {
         //юс╫ц
         _projectileManager.ShootBullet(projectileSpawnPosition.position, RotateVector2(_aimDirection, angle), rangedAttackData);
+
+        if (shootingClip)
+            SoundManager.PlayClip(shootingClip);
     }
 
     private static Vector2 RotateVector2(Vector2 v, float degree)
